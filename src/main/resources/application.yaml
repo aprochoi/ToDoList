@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: kingnaegol
-    password: manager0
-    url: jdbc:mysql://119.71.184.39:3306/todolist?allowPublicKeyRetrieval=true&characterEncoding=UTF-8
