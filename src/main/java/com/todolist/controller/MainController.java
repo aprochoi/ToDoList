@@ -1,14 +1,25 @@
 package com.todolist.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class MainController {
 
     @GetMapping("/main")
-    public String getMain() {
+    public ModelAndView getMain() {
 
-        return "main";
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/main.html");
+
+        return mv;
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity addPost(@RequestBody String content) {
+
+        return new ResponseEntity<>(content, HttpStatus.OK);
     }
 }
