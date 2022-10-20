@@ -13,11 +13,11 @@ import javax.persistence.*;
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+    private Long todoSeq;
 
     private String contents;
 
-    private boolean isCleared;
+    private boolean clearType;
 
     @ManyToOne
     @JoinColumn(name = "USER_SEQ")

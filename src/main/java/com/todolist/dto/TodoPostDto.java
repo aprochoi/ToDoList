@@ -12,4 +12,6 @@ public class TodoPostDto {
     private long userSeq;
 
     private String contents;
+
+    private boolean clearType;
 }

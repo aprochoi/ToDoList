@@ -8,7 +8,7 @@ $('#b_add').click(function () {
     // let value = document.getElementById("add_input").value;
     let value = $('#add_input').val();
 
-    value = { "value": value };
+    value = { "contents": value };
 
     console.log(JSON.stringify(value));
 
@@ -16,8 +16,9 @@ $('#b_add').click(function () {
 
     $.ajax({
         type: "POST",            // HTTP method type(GET, POST) 형식이다.
-        url: "/add",      // 컨트롤러에서 대기중인 URL 주소이다.
-        data: contents,            // Json 형식의 데이터이다.
+        url: "/add/1",      // 컨트롤러에서 대기중인 URL 주소이다.
+        data: value,
+        dataType: "json"     // Json 형식의 데이터이다.
         success: function (res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
             // 응답코드 > 0000
             alert(res.code);
