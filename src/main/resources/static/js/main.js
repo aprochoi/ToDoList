@@ -1,6 +1,10 @@
+// import module from "../module/js";
+import { useAjax, createMemo } from "../module/module.js";
+
 if (typeof jQuery == undefined) {
     alert("제이쿼리 안됨")
 }
+
 
 // 메모 추가
 $('#b_add').click(function () {
@@ -8,30 +12,39 @@ $('#b_add').click(function () {
     // let value = document.getElementById("add_input").value;
     let value = $('#add_input').val();
 
-    value = { "value": value };
-
-    console.log(JSON.stringify(value));
+    value = { "contents": value, "userSeq": 1 };
 
     alert("추가할 내용 : " + value);
 
-    $.ajax({
-        type: "POST",            // HTTP method type(GET, POST) 형식이다.
-        url: "/add",      // 컨트롤러에서 대기중인 URL 주소이다.
-        data: contents,            // Json 형식의 데이터이다.
-        success: function (res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
-            // 응답코드 > 0000
-            alert(res.code);
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-            alert("통신 실패.");
-        }
-    });
+    // 모듈화 예시
+    let res = useAjax("POST", "/add", value);
+
+    let example = {
+        length: 5,
+        0: { contents: "memo1", isCleared: false },
+        1: { contents: "memo2", isCleared: true },
+        2: { contents: "memo3", isCleared: false },
+        3: { contents: "memo4", isCleared: true },
+        4: { contents: "memo5", isCleared: false },
+    }
+
+    for (let i = 0; i < example.length; i++) {
+        $('#list').append(createMemo(example[i].contents, example[i].isCleared));
+    }
+
 
 
 });
 
-function success(aaa) {
-    alert(sss);
+// 불러오기
+function success(result) {
+
+    // for (let i = 0; i < result.length; i++) {
+    //     $("#list").append("<li> " + result[i].contents + "</li>");
+    // }
+
+
+
 }
 
 // 추가
