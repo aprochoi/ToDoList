@@ -2,10 +2,6 @@ if (typeof jQuery == undefined) {
     alert("제이쿼리 안됨")
 }
 
-// Load ㅋㅋㅋ 아니 
-
-
-
 // 메모 추가
 $('#b_add').click(function () {
     // 추가할 내용
@@ -18,20 +14,9 @@ $('#b_add').click(function () {
 
     alert("추가할 내용 : " + value);
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/add",
-    //     dataType: 'json',
-    //     contentType: 'application/json',
-    //     data: value,
-    //     success: success(),
-    //     error: fail()
-    // });
-
-
     $.ajax({
         type: "POST",            // HTTP method type(GET, POST) 형식이다.
-        url: "/test/ajax",      // 컨트롤러에서 대기중인 URL 주소이다.
+        url: "/add",      // 컨트롤러에서 대기중인 URL 주소이다.
         data: value,            // Json 형식의 데이터이다.
         success: function (res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
             // 응답코드 > 0000
@@ -49,13 +34,9 @@ function success(aaa) {
     alert(sss);
 }
 
-
 // 추가
 // 삭제
 // 수정(완료여부)
-
-
-
 
 function success(json) {
 
