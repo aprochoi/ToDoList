@@ -20,6 +20,8 @@ public class MainController {
     @PostMapping("/add")
     public ResponseEntity addPost(@RequestBody String content) {
 
+        System.out.println(content);
+
         return new ResponseEntity<>(content, HttpStatus.OK);
     }
 }
