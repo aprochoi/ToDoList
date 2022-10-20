@@ -18,8 +18,11 @@ public class MainController {
         return mv;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity addPost(@RequestBody TodoPostDto todoPostDto) {
+    @PostMapping("/add/{userSeq}")
+    public ResponseEntity addPost(@RequestBody TodoPostDto todoPostDto,
+                                  @PathVariable("userSeq") long userSeq) {
+
+        todoPostDto.setUserSeq(userSeq);
 
         return new ResponseEntity<>(todoPostDto, HttpStatus.OK);
     }
